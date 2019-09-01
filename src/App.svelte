@@ -5,8 +5,20 @@
 	let pages = 0;
 	let description = '';
 
+	let books =[]
+
 	function setTitle(event){
 		title = event.target.value;
+	}
+
+	function addBook(){
+		const newBook = {
+			title : title,
+			pages : pages,
+			description: description
+
+		};
+		books = books.concat(newBook)
 	}
 </script>
 
@@ -41,9 +53,20 @@
 		<textarea rows="3" id="description" bind:value ={description}/>
 	</div>
 
-	<Button>ADD Book</Button>
+	<Button on:click={addBook}>ADD Book</Button>
 
 </section>
 
-<Book bookTitle={title} bookPages={pages} bookDescription={description}/>
+<section>
+{#if books.length === 0}
+	<p>
+	   Add a new book 
+	</p>
+	{:else}
+	{#each books as book}
+		<Book bookTitle={book.title} bookPages={book.pages} bookDescription={book.description}/>
+	{/each}
+{/if}
+
+</section>
 
