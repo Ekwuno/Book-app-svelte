@@ -1,11 +1,13 @@
 <script>
 	import Book from './book.svelte'
 	import Button from './button.svelte'
+	import Purchase from './purchase.svelte'
 	let title = '';
 	let pages = 0;
 	let description = '';
 
-	let books =[]
+	let books =[];
+	let purchases = [];
 
 	function setTitle(event){
 		title = event.target.value;
@@ -19,6 +21,13 @@
 
 		};
 		books = books.concat(newBook)
+	}
+
+	function purchase(event){
+		const selectedTitle= event.detail;
+		purchases= purchase.concat({...books.prodcts.find(book => book.title === selectedTitle)
+
+		});
 	}
 </script>
 
@@ -64,9 +73,19 @@
 	</p>
 	{:else}
 	{#each books as book}
-		<Book bookTitle={book.title} bookPages={book.pages} bookDescription={book.description}/>
+		<Book bookTitle={book.title} 
+		bookPages={book.pages} 
+		bookDescription={book.description}
+		on:purchase={purchase}
+		/>
 	{/each}
 {/if}
 
+</section>
+
+<hr>
+
+<section>
+	<Purchase books ={purchases} /> 
 </section>
 

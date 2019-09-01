@@ -1,8 +1,14 @@
 <script>
+    import {createEventDispatcher} from 'svelte'
     import Button from './button.svelte'
     export let bookTitle;
     export let bookPages;
     export let bookDescription;
+
+    const dispatch =  createEventDispatcher()
+    function purchase(){
+        dispatch('purchase', bookTitle)
+    }
 
 </script>
 
@@ -35,6 +41,6 @@
     <h1> {bookTitle} </h1>
     <h2> {bookPages}</h2>
     <p> {bookDescription}</p>
-    <Button>ADD</Button>
+    <Button on:click={purchase}>Buy</Button>
 
 </div>
