@@ -6,8 +6,8 @@
     export let bookDescription;
 
     const dispatch =  createEventDispatcher()
-    function purchase(){
-        dispatch('purchase', bookTitle)
+    function purchaseBook(){
+        dispatch('buy', bookTitle)
     }
 
 </script>
@@ -41,6 +41,6 @@
     <h1> {bookTitle} </h1>
     <h2> {bookPages}</h2>
     <p> {bookDescription}</p>
-    <Button on:click={purchase}>Buy</Button>
+    <Button on:click={purchaseBook}>Buy</Button>
 
 </div>

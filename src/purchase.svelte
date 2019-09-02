@@ -1,5 +1,5 @@
 <script>
-    export let items;
+    export let books;
 
 </script>
 
@@ -20,7 +20,7 @@
 
 <ul>
     {#each books as book}
-    <li> {book.title} - {book.price}}</li>
+    <li> {book.title} - {book.page}</li>
     {/each}
 </ul>
 

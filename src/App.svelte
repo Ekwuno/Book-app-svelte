@@ -23,12 +23,13 @@
 		books = books.concat(newBook)
 	}
 
-	function purchase(event){
+	function purchaseBook(event){
 		const selectedTitle= event.detail;
-		purchases= purchase.concat({...books.prodcts.find(book => book.title === selectedTitle)
-
+		purchases = purchases.concat({
+			...books.find(book => book.title === selectedTitle)
 		});
 	}
+
 </script>
 
 <style>
@@ -76,7 +77,7 @@
 		<Book bookTitle={book.title} 
 		bookPages={book.pages} 
 		bookDescription={book.description}
-		on:purchase={purchase}
+		on:buy={purchaseBook}
 		/>
 	{/each}
 {/if}
@@ -86,6 +87,6 @@
 <hr>
 
 <section>
-	<Purchase books ={purchases} /> 
+	<Purchase books ={purchases}  /> 
 </section>
 
